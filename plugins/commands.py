@@ -30,14 +30,14 @@ USERBOT_REPO = f"""{emoji.ROBOT} **Telegram Voice Chat UserBot**
 - Repository: [GitHub](https://github.com/lushaimusic/vc-userbot)
 - License: GPL-3.0-or-later"""
 
-@Client.on_message(filters.command(["help"], prefixes=f"{HNDLR}") & filters.group)
+@Client.on_message(filters.command(["help"], prefixes=f"{HNDLR}" & filters.group))
 async def help(client, message):
     await message.reply_text(
         text=USERBOT_HELP,
         quote=True,
         disable_web_page_preview=True,
 
-@Client.on_message(filters.command(["repo"], prefixes=f"{HNDLR}") & filters.group)
+@Client.on_message(filters.command(["repo"], prefixes=f"{HNDLR}" & filters.group))
 async def repo(client, message):
     await message.reply_text(
         text=USERBOT_REPO,
