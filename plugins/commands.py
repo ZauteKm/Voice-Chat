@@ -30,20 +30,16 @@ USERBOT_REPO = f"""{emoji.ROBOT} **Telegram Voice Chat UserBot**
 - Repository: [GitHub](https://github.com/lushaimusic/vc-userbot)
 - License: GPL-3.0-or-later"""
 
-@Client.on_message(filters.command(["help"], prefixes=f"{HNDLR}"))
-async def show_help(_, m: Message):
-    if mp.msg.get('help') is not None:
-        await mp.msg['help'].delete()
-    mp.msg['help'] = await m.reply_text(USERBOT_HELP, quote=False)
-    await m.delete()
-
-@Client.on_message(filters.command(["repo"], prefixes=f"{HNDLR}"))
-async def show_repository(_, m: Message):
-    if mp.msg.get('repo') is not None:
-        await mp.msg['repo'].delete()
-    mp.msg['repo'] = await m.reply_text(
-        USERBOT_REPO,
+@Client.on_message(filters.command(["help"], prefixes=f"{HNDLR}") & filters.group))
+async def help(client, message):
+    await message.reply_text(
+        text=USERBOT_HELP,
+        quote=True,
         disable_web_page_preview=True,
-        quote=False
-    )
-    await m.delete()
+
+@Client.on_message(filters.command(["repo"], prefixes=f"{HNDLR}") & filters.group))
+async def repo(client, message):
+    await message.reply_text(
+        text=USERBOT_REPO,
+        quote=True,
+        disable_web_page_preview=True,
