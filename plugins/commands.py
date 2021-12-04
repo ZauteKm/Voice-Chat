@@ -37,7 +37,7 @@ async def help(client, message):
         quote=True,
         disable_web_page_preview=True,
 
-@Client.on_message(filters.command(["repo"], prefixes=f"{HNDLR}" & filters.group))
+@Client.on_message(filters.command(["repo"], prefixes=f"{HNDLR}"))
 async def repo(client, message):
     await message.reply_text(
         text=USERBOT_REPO,
